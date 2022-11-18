@@ -33,7 +33,8 @@
 
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
-
+cash = 0
+history = {}
 while True:
     print('1. пополнение счета')
     print('2. покупка')
@@ -42,11 +43,17 @@ while True:
 
     choice = input('Выберите пункт меню')
     if choice == '1':
-        pass
+        summ = input('Введите сумму:')
+        cash += int(summ)
     elif choice == '2':
-        pass
+        bay = input('Введите сумму:')
+        if int(bay) <= cash:
+            purchase = input('Введите товар:')
+            history[purchase]=int(bay)
+            cash -= int(bay)
     elif choice == '3':
-        pass
+        for elem in history:
+            print(f'{elem}: {history[elem]} руб.')
     elif choice == '4':
         break
     else:
