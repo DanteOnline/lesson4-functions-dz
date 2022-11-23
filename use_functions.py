@@ -33,28 +33,29 @@
 
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
-cash = 0
-history = {}
-while True:
-    print('1. пополнение счета')
-    print('2. покупка')
-    print('3. история покупок')
-    print('4. выход')
+def bank():
+    cash = 0
+    history = {}
+    while True:
+        print('1. пополнение счета')
+        print('2. покупка')
+        print('3. история покупок')
+        print('4. выход')
 
-    choice = input('Выберите пункт меню')
-    if choice == '1':
-        summ = input('Введите сумму:')
-        cash += int(summ)
-    elif choice == '2':
-        bay = input('Введите сумму:')
-        if int(bay) <= cash:
-            purchase = input('Введите товар:')
-            history[purchase]=int(bay)
-            cash -= int(bay)
-    elif choice == '3':
-        for elem in history:
-            print(f'{elem}: {history[elem]} руб.')
-    elif choice == '4':
-        break
-    else:
-        print('Неверный пункт меню')
+        choice = input('Выберите пункт меню')
+        if choice == '1':
+            summ = input('Введите сумму:')
+            cash += int(summ)
+        elif choice == '2':
+            bay = input('Введите сумму:')
+            if int(bay) <= cash:
+                purchase = input('Введите товар:')
+                history[purchase]=int(bay)
+                cash -= int(bay)
+        elif choice == '3':
+            for elem in history:
+                print(f'{elem}: {history[elem]} руб.')
+        elif choice == '4':
+            break
+        else:
+            print('Неверный пункт меню')
