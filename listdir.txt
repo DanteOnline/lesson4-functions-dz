@@ -1,0 +1,1 @@
+files: .gitignore,accounts.json,borndayforewer.py,console_file_manage.py,LICENSE,listdir.txt,myfunctions.py,README.md,test_filemanager.py,test_python.py,use_functions.py\ndirs: .git,.idea,.pytest_cache,__pycache__\n

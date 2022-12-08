@@ -5,6 +5,7 @@ from sys import platform
 from borndayforewer import victoryna
 from use_functions import bank
 author = 'Анатолий'
+FILE_NAME = 'listdir.txt'
 while True:
     print('1. создать папку')
     print('2. удалить (файл/папку)')
@@ -17,7 +18,8 @@ while True:
     print('9. играть в викторину')
     print('10. мой банковский счет')
     print('11. смена рабочей директории')
-    print('12. выход')
+    print('12. сохранить содержимое рабочей директории в файл')
+    print('13. выход')
 
     choice = input('Выберите пункт меню')
     if choice == '1':
@@ -62,6 +64,13 @@ while True:
         else:
             print('нет такой директории')
     elif choice == '12':
+        with open(FILE_NAME, 'w') as f:
+            listOfDir = ','.join([f for f in os.listdir() if not os.path.isfile(f)])
+            listOfFiles = ','.join([f for f in os.listdir() if os.path.isfile(f)])
+            f.write(f'files: {listOfFiles}\\n')
+            f.write(f'dirs: {listOfDir}\\n')
+
+    elif choice == '13':
         break
 
     else:

@@ -33,9 +33,36 @@
 
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
+import json
+import os
+
+FILE_ACCOUNTS = 'accounts.json'
+FILE_HISTORY = 'history.json'
+
+
+def save_account(summ):
+    accounts = {1: summ}
+    with open(FILE_ACCOUNTS, 'w') as f:
+        json.dump(accounts, f)
+
+
+def save_history(hist):
+    with open(FILE_HISTORY, 'w') as f:
+        json.dump(hist, f)
+
+
 def bank():
-    cash = 0
-    history = {}
+    if os.path.exists(FILE_ACCOUNTS):
+        with open(FILE_ACCOUNTS, 'r') as f:
+            result = json.load(f)
+            cash = result['1']
+    else:
+        cash = 0
+    if os.path.exists(FILE_HISTORY):
+        with open(FILE_HISTORY, 'r') as f:
+            history = json.load(f)
+    else:
+        history = {}
     while True:
         print('1. пополнение счета')
         print('2. покупка')
@@ -50,12 +77,15 @@ def bank():
             bay = input('Введите сумму:')
             if int(bay) <= cash:
                 purchase = input('Введите товар:')
-                history[purchase]=int(bay)
+                history[purchase] = int(bay)
                 cash -= int(bay)
         elif choice == '3':
             for elem in history:
                 print(f'{elem}: {history[elem]} руб.')
         elif choice == '4':
+            save_account(cash)
+            save_history(history)
             break
         else:
             print('Неверный пункт меню')
+
