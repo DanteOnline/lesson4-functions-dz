@@ -71,8 +71,11 @@ def bank():
 
         choice = input('Выберите пункт меню')
         if choice == '1':
-            summ = input('Введите сумму:')
-            cash += int(summ)
+             summ = input('Введите сумму:')
+             try:
+                cash += int(summ)
+             except Exception as e:
+                print('Ощибка.Введите число',e)
         elif choice == '2':
             bay = input('Введите сумму:')
             if int(bay) <= cash:
@@ -88,4 +91,4 @@ def bank():
             break
         else:
             print('Неверный пункт меню')
-
+bank()

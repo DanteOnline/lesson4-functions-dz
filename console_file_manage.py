@@ -43,10 +43,10 @@ while True:
     elif choice == '4':
         print(os.listdir())
     elif choice == '5':
-        listOfDir = [f for f in os.listdir() if not os.path.isfile(f)]
+        listOfDir = [f for f in os.listdir() if not os.path.isfile(f)]#уже используется генератор с тернарным оператором
         print(listOfDir)
     elif choice == '6':
-        listOfFiles = [f for f in os.listdir() if os.path.isfile(f)]
+        listOfFiles = [f for f in os.listdir() if os.path.isfile(f)]#уже используется генератор с тернарным оператором
         print(listOfFiles)
     elif choice == '7':
         print(platform)
