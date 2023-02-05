@@ -33,6 +33,8 @@
 
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
+cash = 0
+history_shop = {}
 
 while True:
     print('1. пополнение счета')
@@ -42,11 +44,17 @@ while True:
 
     choice = input('Выберите пункт меню')
     if choice == '1':
-        pass
+        cash += int( input('введите сумму пополнения :'))
     elif choice == '2':
-        pass
+        shop =  int( input('введите сумму покупки:'))
+        if cash >= shop:
+            name_shop = input('введите наименование покупки :')
+            cash -= shop
+            history_shop[name_shop]=shop
+        elif cash < shop:
+            print('денег не хватает')
     elif choice == '3':
-        pass
+        print(history_shop)
     elif choice == '4':
         break
     else:
